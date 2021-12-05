@@ -1,4 +1,4 @@
-const Cards = () => {
+const Card = () => {
 
     const cards = [
         {
@@ -51,4 +51,4 @@ const Cards = () => {
     );
 }
 
-export default Cards;
+export default Card;

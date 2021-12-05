@@ -1,6 +1,18 @@
-import profile from '../../assets/images/undraw_profile.svg'
+import {useState} from 'react';
+import profile from '../../assets/images/undraw_profile.svg';
 
 const NavBar = () => {
+
+    const [name, setName] = useState()
+    var retrieve = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    const handleLoad = () => {
+        if(retrieve !== null) {
+            setName(retrieve.loginName)
+            return false;
+        }
+        else{console.log('user not found')}
+    }
 
     // const handleClick = (e) => {
     //     e.preventDefault()
@@ -157,10 +169,10 @@ const NavBar = () => {
                             </div>
                         </li>
                 <div className="topbar-divider d-none d-sm-block"></div>
-                <li className="nav-item dropdown no-arrow">
+                <li onLoad={handleLoad} className="nav-item dropdown no-arrow">
                             <a className="nav-link dropdown-toggle" href="/" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">{name}</span>
                                 <img className="img-profile rounded-circle"
                                     src={profile} alt=""/>
                             </a>
