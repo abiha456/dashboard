@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
     const [firstName, setFirstName] = useState ('Enter First Name')
     const [lastName, setLastName] = useState('Enter First Name')
-    const [email, setEmail] = useState('Enter First Name')
+    const [email, setEmail] = useState('Enter Email Address')
     const [pass, setPass] = useState('Enter First Name')
     const [resetPass, setResetPass] = useState('Enter First Name')
     const [error, setError] = useState();
     const [passError, setPassError] = useState();
+    const navigate = useNavigate();
 
     const handleFirstName = (e) => {
         setFirstName(e.target.value);
@@ -55,7 +57,8 @@ const Register = () => {
 
         userData= JSON.stringify(newUser)
         localStorage.setItem('userData', userData);
-        console.log(userData)
+
+        navigate("/")
     }
 
     return (

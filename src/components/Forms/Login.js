@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
     const [emailAdd, setEmailAdd] = useState('Enter Email Address');
     const [password, setPassword] = useState('Enter Password');
     const [error, setError] = useState()
+    const navigate = useNavigate();
+
 
     const getEmail = (e) => {
         setEmailAdd(e.target.value);
@@ -15,6 +17,7 @@ const Login = () => {
     }
 
     var retrieve = JSON.parse(localStorage.getItem("userData"));
+    // console.log(retrieve)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -29,7 +32,6 @@ const Login = () => {
 
         if(retrieve !== '') {
             for(var user of retrieve) {
-                console.log(retrieve)
                 if(emailAdd === user.email && password === user.pass){ // matching the values of login user with retrieve 
                     var loggedInUser={ // creating a new object of logged in user
                         'loginName':user.firstName  +  user.lastName,
@@ -39,6 +41,9 @@ const Login = () => {
                     loggedInUser=JSON.stringify(loggedInUser);
                     localStorage.setItem('loggedInUser' , loggedInUser); // saving the object of logged in user in local storage                        
                     console.log(loggedInUser)
+
+                    navigate("/admin/dashboard");
+
                 }
                else {
                    console.log('email or password is incorrect')
