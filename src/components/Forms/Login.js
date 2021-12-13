@@ -3,9 +3,10 @@ import {Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [emailAdd, setEmailAdd] = useState('Enter Email Address');
-    const [password, setPassword] = useState('Enter Password');
+    const [emailAdd, setEmailAdd] = useState();
+    const [password, setPassword] = useState();
     const [error, setError] = useState()
+    const [loginError, setLoginError] = useState()
     const navigate = useNavigate();
 
 
@@ -46,7 +47,7 @@ const Login = () => {
 
                 }
                else {
-                   console.log('email or password is incorrect')
+                setLoginError("Email or Password incorrect");
                }
             }
         }
@@ -76,25 +77,27 @@ const Login = () => {
                                                     id="exampleInputEmail" 
                                                     aria-describedby="emailHelp"
                                                     onChange={getEmail}
-                                                    value={emailAdd} />
+                                                    value={emailAdd}
+                                                    placeholder="Enter Email Address" />
                                                 </div>
                                                 <div className="form-group">
                                                     <input type="password" 
                                                     className="form-control form-control-user"
                                                     id="exampleInputPassword"
                                                     onChange={getPassword}
-                                                    value={password} />
+                                                    value={password}
+                                                    placeholder="Enter Password" />
                                                 </div>
                                                 <button type="submit" className="btn btn-primary btn-user btn-block">
                                                     Login
                                                 </button>
                                                 {error && <div class="alert alert-danger mt-2" role="alert">
-                                                    {error}
+                                                    {error} 
+                                                </div>}
+                                                {loginError && <div class="alert alert-danger mt-2" role="alert">
+                                                    {loginError}
                                                 </div>}
                                             </form>
-                                            <div className="text-center">
-                                                <a className="small" href="forgot-password.html">Forgot Password?</a>
-                                            </div>
                                             <div className="text-center">
                                                 <Link className="small" to="/register">Create an Account!</Link>
                                             </div>

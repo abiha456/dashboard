@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    const [firstName, setFirstName] = useState ('Enter First Name')
-    const [lastName, setLastName] = useState('Enter First Name')
-    const [email, setEmail] = useState('Enter Email Address')
-    const [pass, setPass] = useState('Enter First Name')
-    const [resetPass, setResetPass] = useState('Enter First Name')
+    const [firstName, setFirstName] = useState ()
+    const [lastName, setLastName] = useState()
+    const [email, setEmail] = useState()
+    const [pass, setPass] = useState()
+    const [resetPass, setResetPass] = useState()
     const [error, setError] = useState();
     const [passError, setPassError] = useState();
     const navigate = useNavigate();
@@ -81,7 +81,8 @@ const Register = () => {
                                                 class="form-control form-control-user"
                                                 id="exampleFirstName"
                                                 onChange={handleFirstName}
-                                                value={firstName} />
+                                                value={firstName}
+                                                placeholder="Enter First Name" />
                                             </div>
                                             <div class="col-sm-6">
                                                 <input 
@@ -89,7 +90,8 @@ const Register = () => {
                                                 class="form-control form-control-user"
                                                 id="exampleLastName"
                                                 onChange={handleLastName}
-                                                value={lastName} />
+                                                value={lastName}
+                                                placeholder="Enter Last Name" />
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -98,7 +100,8 @@ const Register = () => {
                                             class="form-control form-control-user" 
                                             id="exampleInputEmail"
                                             onChange={handleEmail}
-                                            value={email} />
+                                            value={email}
+                                            placeholder="Enter Email Address" />
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
@@ -107,7 +110,8 @@ const Register = () => {
                                                 class="form-control form-control-user"
                                                 id="exampleInputPassword"
                                                 onChange={handlePass}
-                                                value={pass} />
+                                                value={pass}
+                                                placeholder="Password" />
                                             </div>
                                             <div class="col-sm-6">
                                                 <input 
@@ -115,7 +119,8 @@ const Register = () => {
                                                 class="form-control form-control-user"
                                                 id="exampleRepeatPassword"
                                                 onChange={handleResetPass}
-                                                value={resetPass} />
+                                                value={resetPass}
+                                                placeholder="Confirm Password" />
                                                 {passError && <div class="text-danger mt-2">
                                                     {passError}
                                                 </div>}
